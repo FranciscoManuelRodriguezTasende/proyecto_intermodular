@@ -6,16 +6,17 @@ from .models import Tarifa, Monitor, Socio, Clase
 def socio_to_dict(s):
     return{
         'id': s.id,
+        'nombre': s.nombre,
         'email': s.email,
         'tarifa_id': s.tarifa.id if s.tarifa else None,
-        'tarifa_nombre': s.tarifa.nombre if s.tarifa else 'Sin tarifa'
+        'tarifa_nombre': s.tarifa.tipo if s.tarifa else 'Sin tarifa'
     }
 
 def monitor_to_dict(m):
     return {
         'id': m.id,
         'nombre': m.nombre,
-        'especialidad': m.especialidad,
+        'clases': m.clases,
         'email': m.email
     }
 
@@ -28,12 +29,36 @@ def clase_to_dict(c):
         'monitor_nombre': c.monitor.nombre if c.monitor else 'Sin monitor asignado',
         'asistentes_count': c.asistentes.count()
     }
-    
-def lista_tarifas(request):
-    if request.method == 'GET':
-        tarifas = list(Tarifa.objects.values())
-        return JsonResponse(tarifas, safe=False)
 
+def tarifa_to_dict(t):
+    return {
+        'id': t.id,
+        'tipo': t.tipo,
+        'precio': str(t.precio),
+        'descripcion': t.descripcion
+    }
+
+@csrf_exempt
+def gestion_tarifas(request):
+
+    if request.method == 'GET':
+        tarifas = Tarifa.objects.all()
+        datos = [tarifa_to_dict(t) for t in tarifas]
+        return JsonResponse(datos, safe=False)
+
+    elif request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            nueva_tarifa = Tarifa.objects.create(
+                tipo=data['tipo'],
+                precio=data['precio'],
+                descripcion=data.get('descripcion', '')
+            )
+            return JsonResponse(tarifa_to_dict(nueva_tarifa), status=201)
+            
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=400)
+        
 @csrf_exempt
 def gestion_socios(request):
     if request.method == 'GET':
@@ -90,7 +115,7 @@ def gestion_monitores(request):
         data = json.loads(request.body)
         nuevo_monitor = Monitor.objects.create(
             nombre=data['nombre'], 
-            especialidad=data['especialidad'], 
+            clases=data['clases'], 
             email=data['email']
         )
         return JsonResponse(monitor_to_dict(nuevo_monitor), status=201)
@@ -108,7 +133,7 @@ def detalle_monitor(request, id):
     elif request.method == 'PUT':
         data = json.loads(request.body)
         monitor.nombre = data['nombre']
-        monitor.especialidad = data['especialidad']
+        monitor.clases = data['clases']
         monitor.email = data['email']
         monitor.save()
         return JsonResponse(monitor_to_dict(monitor))
@@ -116,7 +141,7 @@ def detalle_monitor(request, id):
     elif request.method == 'PATCH':
         data = json.loads(request.body)
         if 'nombre' in data: monitor.nombre = data['nombre']
-        if 'especialidad' in data: monitor.especialidad = data['especialidad']
+        if 'clases' in data: monitor.clases = data['clases']
         if 'email' in data: monitor.email = data['email']
         monitor.save()
         return JsonResponse(monitor_to_dict(monitor))

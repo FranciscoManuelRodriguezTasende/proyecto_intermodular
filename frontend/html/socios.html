@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitGym | Socios</title>
+    <link rel="stylesheet" href="../css/socios.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="app-container" class="dashboard-container">
+        
+        <aside class="sidebar">
+            <div class="logo"><a href="index.html"><i class="fas fa-dumbbell"></i> <span>FitGym</span></a></div>
+            <nav>
+                <ul class="menu-nav">
+                    <li><a href="index.html" class="nav-link menu-inactivo"><i class="fas fa-bullhorn"></i> Inicio / Tablón</a></li>
+                    
+                    <li class="solo-admin"><a href="monitores.html" class="nav-link menu-inactivo"><i class="fas fa-user-tie"></i> Monitores</a></li>
+                    <li class="solo-admin"><a href="socios.html" class="nav-link active"><i class="fas fa-users"></i> Socios</a></li>
+                    
+                    <li><a href="clases.html" class="nav-link menu-inactivo"><i class="fas fa-calendar-alt"></i> Clases</a></li>
+                    <li><a href="tarifas.html" class="nav-link menu-inactivo"><i class="fas fa-tags"></i> Tarifas</a></li>
+                    
+                    <li><a href="#" id="btn-logout" class="nav-link logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="page-header">
+                <div class="header-info">
+                    <h1>Socios</h1>
+                    <p>Gestiona los miembros inscritos en el gimnasio</p>
+                </div>
+                
+                <div class="header-actions">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="buscador-socios" placeholder="Buscar por nombre...">
+                    </div>
+                    <button type="button" id="btn-nuevo-socio" class="btn btn-success">
+                        <i class="fas fa-plus"></i> Añadir Socio
+                    </button>
+                </div>
+            </div>
+
+            <div id="contenedor-socios" class="socios-list">
+                <div class="mensaje-carga">
+                    <i class="fas fa-spinner fa-spin"></i> Conectando con la base de datos...
+                </div>
+            </div>
+
+            <div id="modal-editar" class="modal-overlay">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2><i class="fas fa-user-edit"></i> Editar Socio</h2>
+                        <button type="button" id="btn-cerrar-modal" class="btn-cerrar"><i class="fas fa-times"></i></button>
+                    </div>
+                    <form id="form-editar">
+                        <input type="hidden" id="edit-id">
+                        <div class="form-group"><label>Nombre Completo</label><input type="text" id="edit-nombre" required></div>
+                        <div class="form-group"><label>Email</label><input type="email" id="edit-email" required></div>
+                        <div class="form-group"><label>ID Tarifa</label><input type="number" id="edit-tarifa"></div>
+                        <div class="modal-footer">
+                            <button type="button" id="btn-cancelar" class="btn btn-danger">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div id="modal-patch" class="modal-overlay">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2><i class="fas fa-id-card"></i> Editar Tarifa y Email</h2>
+                        <button type="button" id="btn-cerrar-patch" class="btn-cerrar"><i class="fas fa-times"></i></button>
+                    </div>
+                    <form id="form-patch" onsubmit="event.preventDefault();">
+                        <input type="hidden" id="patch-id">
+                        <div class="form-group"><label>Email</label><input type="email" id="patch-email" required></div>
+                        <div class="form-group"><label>ID Tarifa</label><input type="number" id="patch-tarifa"></div>
+                        <div class="modal-footer">
+                            <button type="button" id="btn-cancelar-patch" class="btn btn-danger">Cancelar</button>
+                            <button type="button" id="btn-enviar-patch" class="btn btn-success" onclick="enviarPatch()">Actualizar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div id="modal-crear" class="modal-overlay">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2><i class="fas fa-user-plus"></i> Añadir Nuevo Socio</h2>
+                        <button type="button" id="btn-cerrar-crear" class="btn-cerrar"><i class="fas fa-times"></i></button>
+                    </div>
+                    <form id="form-crear" onsubmit="event.preventDefault(); crearSocio();">
+                        <div class="form-group">
+                            <label>Nombre Completo</label>
+                            <input type="text" id="crear-nombre" placeholder="Ej: Ana López" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="crear-email" placeholder="ana@ejemplo.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>ID Tarifa</label>
+                            <input type="number" id="crear-tarifa" placeholder="Ej: 1">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="btn-cancelar-crear" class="btn btn-danger">Cancelar</button>
+                            <button type="submit" class="btn btn-success">Guardar Socio</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../js/socios.js"></script>
+</body>
+</html>

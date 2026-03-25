@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitGym | Monitores</title>
+    <link rel="stylesheet" href="../css/monitores.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="dashboard-container">
+        
+        <aside class="sidebar">
+            <div class="logo"><a href="index.html"><i class="fas fa-dumbbell"></i> <span>FitGym</span></a></div>
+            <nav>
+                <ul class="menu-nav">
+                    <li><a  class="nav-link menu-inactivo" href="index.html"><i class="fas fa-bullhorn"></i> Inicio / Tablón</a></li>
+                    <li class="solo-admin"><a class="nav-link active" href="monitores.html" class="nav-link menu-inactivo"><i class="fas fa-user-tie"></i> Monitores</a></li>
+                    <li class="solo-admin"><a class="nav-link menu-inactivo" href="socios.html" ><i class="fas fa-users"></i> Socios</a></li>
+                    <li><a class="nav-link menu-inactivo" href="clases.html"><i class="fas fa-calendar-alt"></i> Clases</a></li>
+                    <li><a class="nav-link menu-inactivo" href="tarifas.html"><i class="fas fa-tags"></i> Tarifas</a></li>
+                    <li><a href="#" id="btn-logout" class="nav-link logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <div class="page-header">
+                <div class="header-info">
+                    <h1>Monitores</h1>
+                    <p>Gestiona el equipo de monitores del gimnasio</p>
+                </div>
+                <button type="button" id="btn-nuevo-monitor" class="btn btn-success">
+                    <i class="fas fa-plus"></i> Añadir Monitor
+                </button>
+            </div>
+
+            <div id="contenedor-monitores" class="monitores-list">
+                <div class="mensaje-carga">
+                    <i class="fas fa-spinner fa-spin"></i> Conectando con la base de datos...
+                </div>
+            </div>
+
+            <div id="modal-editar" class="modal-overlay">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2><i class="fas fa-user-edit"></i> Editar Monitor</h2>
+                        <button type="button" id="btn-cerrar-modal" class="btn-cerrar"><i class="fas fa-times"></i></button>
+                    </div>
+                    <form id="form-editar">
+                        <input type="hidden" id="edit-id">
+                        <div class="form-group"><label>Nombre</label><input type="text" id="edit-nombre" required></div>
+                        <div class="form-group"><label>Apellidos</label><input type="text" id="edit-apellidos"></div>
+                        <div class="form-group"><label>Email</label><input type="email" id="edit-email" required></div>
+                        <div class="form-group"><label>Clases</label><input type="text" id="edit-clases"></div>
+                        <div class="modal-footer">
+                            <button type="button" id="btn-cancelar" class="btn btn-danger">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div id="modal-patch" class="modal-overlay">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2><i class="fas fa-envelope"></i> Editar Clases y Email</h2>
+                        <button type="button" id="btn-cerrar-patch" class="btn-cerrar"><i class="fas fa-times"></i></button>
+                    </div>
+                    <form id="form-patch" onsubmit="event.preventDefault();">
+                        <input type="hidden" id="patch-id">
+                        <div class="form-group"><label>Email</label><input type="email" id="patch-email" required></div>
+                        <div class="form-group"><label>Clases</label><input type="text" id="patch-clases"></div>
+                        <div class="modal-footer">
+                            <button type="button" id="btn-cancelar-patch" class="btn btn-danger">Cancelar</button>
+                            <button type="submit" id="btn-enviar-patch" class="btn btn-success" onclick="enviarPatch()">Actualizar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div id="modal-crear" class="modal-overlay">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2><i class="fas fa-user-plus"></i> Añadir Nuevo Monitor</h2>
+                        <button type="button" id="btn-cerrar-crear" class="btn-cerrar"><i class="fas fa-times"></i></button>
+                    </div>
+                    <form id="form-crear" onsubmit="event.preventDefault(); crearMonitor();">
+                        <div class="form-group">
+                            <label>Nombre y Apellidos</label>
+                            <input type="text" id="crear-nombre" placeholder="Ej: Juan Pérez" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="crear-email" placeholder="juan@gimnasio.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Clases (separadas por coma)</label>
+                            <input type="text" id="crear-clases" placeholder="Ej: Yoga, Pilates">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="btn-cancelar-crear" class="btn btn-danger">Cancelar</button>
+                            <button type="submit" class="btn btn-success">Guardar Monitor</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="../js/monitores.js"></script>
+</body>
+</html>
