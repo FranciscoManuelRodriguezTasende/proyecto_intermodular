@@ -10,9 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 2. CONFIGURACIÓN DEL BACKEND ---
-    const API_URL = 'http://localhost:8000/api/socios'; // Asegúrate de que esta es la URL de tu backend
+    const API_URL = 'http://localhost:8000/api/socios';
     const contenedorSocios = document.getElementById('contenedor-socios');
-    let listaSociosGlobal = []; // Guardaremos los socios aquí para poder filtrarlos sin llamar a la base de datos cada vez
+    let listaSociosGlobal = [];
 
     // --- CONSTANTES PARA MODALES ---
     const modalCrear = document.getElementById('modal-crear');
@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(datos)
             });
-            if (respuesta.ok) {
+            if (respuesta.ok) { 
                 cerrarModal(modalPatch);
                 cargarSocios(); 
             } else alert("Error en el servidor");
