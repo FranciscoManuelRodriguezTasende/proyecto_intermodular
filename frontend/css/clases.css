@@ -90,3 +90,117 @@ body {
 #btn-logout{
     margin-bottom: 0;
 }
+
+/* CONTENIDO PRINCIPAL (MAIN)*/
+.main-content { 
+    flex: 1; 
+    padding: 40px 50px; 
+    background-color: #f1f5f9; 
+    overflow-y: auto; 
+}
+
+.page-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 30px; 
+    padding-bottom: 15px; 
+    border-bottom: 1px solid #e2e8f0; 
+}
+
+.header-info h1 { 
+    font-size: 2rem; 
+    color: #1e293b; 
+    margin-bottom: 5px; 
+}
+
+.header-info p { 
+    color: #64748b; 
+    font-size: 1rem; 
+}
+
+/* --- LISTA DE CLASES --- */
+.lista-clases { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 20px; 
+    width: 100%; 
+    max-width: 1400px; 
+}
+
+.mensaje-carga { 
+    text-align: center; 
+    color: #64748b; 
+    padding: 40px; 
+    font-size: 1.1rem; 
+}
+
+/* --- TARJETAS RECICLADAS --- */
+.monitor-card { 
+    background-color: #ffffff; 
+    border: 1px solid #e2e8f0; 
+    border-radius: 12px; 
+    padding: 25px; 
+    display: flex; 
+    align-items: center; 
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); 
+}
+
+.avatar-container { 
+    margin-right: 25px; 
+}
+
+/* Cambiamos el color del icono para diferenciarlo de los usuarios */
+.avatar { 
+    width: 60px; 
+    height: 60px; 
+    background-color: #fef3c7; 
+    color: #d97706; 
+    border-radius: 50%; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-size: 1.5rem; 
+}
+
+.monitor-info { 
+    flex: 1; 
+}
+
+.monitor-info h3 { 
+    font-size: 1.3rem; 
+    color: #1e293b; 
+    margin-bottom: 8px; 
+    text-transform: capitalize; 
+}
+
+/* Usado para la descripción manteniendo los estilos de texto base */
+.email { 
+    color: #64748b; 
+    font-size: 0.95rem; 
+    margin-bottom: 15px; 
+    line-height: 1.5; 
+} 
+
+.clases-tags { 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    flex-wrap: wrap; 
+}
+
+.tag-label { 
+    font-size: 0.9rem; 
+    color: #64748b; 
+    font-weight: bold; 
+}
+
+/* Etiqueta especial para el precio */
+.etiqueta-precio { 
+    background-color: #dcfce7; 
+    color: #16a34a; 
+    font-size: 1rem; 
+    font-weight: 700; 
+    padding: 6px 15px; 
+    border-radius: 8px; 
+}
