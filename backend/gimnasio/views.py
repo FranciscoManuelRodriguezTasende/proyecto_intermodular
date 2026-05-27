@@ -24,7 +24,7 @@ def clase_to_dict(c):
     return {
         'id': c.id,
         'nombre': c.nombre,
-        'horario': c.horario.isoformat() if c.horario else None, 
+        'horario': c.horario, 
         'monitor_id': c.monitor.id if c.monitor else None,
         'monitor_nombre': c.monitor.nombre if c.monitor else 'Sin monitor asignado',
         'asistentes_count': c.asistentes.count()
@@ -167,6 +167,11 @@ def gestion_clases(request):
             nueva_clase.asistentes.set(data['asistentes'])
             
         return JsonResponse(clase_to_dict(nueva_clase), status=201)
+    
+    elif request.method == 'DELETE':
+        # El comando .all().delete() arrasa con toda la tabla
+        Clase.objects.all().delete()
+        return JsonResponse({'mensaje': 'Todas las clases han sido eliminadas de la base de datos'}, status=200)
 
 @csrf_exempt
 def detalle_clase(request, id):

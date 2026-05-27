@@ -23,7 +23,7 @@ class Socio(models.Model):
     
 class Clase(models.Model):
     nombre=models.CharField(max_length=100)
-    horario = models.DateTimeField()
+    horario = models.TextField()
     monitor = models.ForeignKey(Monitor, on_delete=models.SET_NULL, null=True)
     asistentes = models.ManyToManyField(Socio, blank=True)
     def __str__(self):
