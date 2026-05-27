@@ -10,6 +10,12 @@ body {
     color: #1e293b; 
 }
 
+.dashboard-container { 
+    display: flex;
+    height: 100vh; 
+    overflow: hidden; 
+}
+
 .sidebar { 
     width: 260px; 
     background: #ffffff; 
@@ -122,7 +128,8 @@ body {
 /* --- LISTA DE CLASES --- */
 .lista-clases { 
     display: flex; 
-    flex-direction: column; 
+    flex-direction: row;
+    flex-wrap: wrap; 
     gap: 20px; 
     width: 100%; 
     max-width: 1400px; 
@@ -203,4 +210,16 @@ body {
     font-weight: 700; 
     padding: 6px 15px; 
     border-radius: 8px; 
+}
+
+/* --- TAMAÑO FIJO PARA LAS TARJETAS EN CUADRÍCULA --- */
+.lista-clases .monitor-card {
+    width: 400px; 
+    flex-grow: 0;
+    align-items: flex-start;
+}
+
+.lista-clases .clases-tags {
+    flex-wrap: wrap;
+    margin-top: 10px;
 }
