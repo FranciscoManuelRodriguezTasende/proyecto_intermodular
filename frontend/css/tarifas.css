@@ -10,6 +10,12 @@ body {
     color: #1e293b; 
 }
 
+.dashboard-container { 
+    display: flex;
+    height: 100vh; 
+    overflow: hidden; 
+}
+
 .sidebar { 
     width: 260px; 
     background: #ffffff; 
@@ -89,4 +95,122 @@ body {
 
 #btn-logout{
     margin-bottom: 0;
+}
+
+/* --- CONTENIDO PRINCIPAL (MAIN) Y CABECERA --- */
+.main-content { 
+    flex: 1; 
+    padding: 40px 50px; 
+    background-color: #f1f5f9; 
+    overflow-y: auto; 
+}
+
+.page-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    margin-bottom: 30px; 
+    padding-bottom: 15px; 
+    border-bottom: 1px solid #e2e8f0; 
+}
+
+.header-info h1 { 
+    font-size: 2rem; 
+    color: #1e293b; 
+    margin-bottom: 5px; 
+}
+
+.header-info p { 
+    color: #64748b; 
+    font-size: 1rem; 
+}
+
+/* Contenedor flex para centrar las 3 tarjetas */
+.lista-tarifas {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+/* 1. EL CONTENEDOR DE LA TARJETA (Aporta la perspectiva 3D) */
+.flip-card {
+    background-color: transparent;
+    width: 450px;
+    height: 550px;
+    perspective: 1000px; 
+}
+
+/* 2. EL EJE CENTRAL QUE GIRA */
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 1.5s; 
+    transform-style: preserve-3d; 
+}
+
+/* 3. EL TRIGGER: Al hacer hover, rotamos el eje 180 grados */
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+/* 4. LAS CARAS (Frontal y Trasera) */
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; 
+    backface-visibility: hidden;         
+    border-radius: 16px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+/* Diseño de la cara Frontal */
+.flip-card-front {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+}
+
+.flip-card-front h2 {
+    color: #1e293b;
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.flip-card-front .precio {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #4f46e5;
+}
+
+.flip-card-front .mes {
+    color: #64748b;
+    font-size: 1.1rem;
+}
+
+/* Diseño de la cara Trasera (La que está dada la vuelta inicialmente) */
+.flip-card-back {
+    background-color: #4f46e5; 
+    color: white;
+    transform: rotateY(180deg); 
+}
+
+.flip-card-back h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+    padding-bottom: 10px;
+}
+
+.flip-card-back p {
+    font-size: 1.1rem;
+    line-height: 1.6;
 }
