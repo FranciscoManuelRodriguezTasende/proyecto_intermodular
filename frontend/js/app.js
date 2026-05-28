@@ -19,6 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
         pantallaLogin.style.display = 'none';
         appContainer.style.display = 'flex';
+
+        //Llamada a la función para que se pinten los socios al momento de iniciar sesión sin tener que actualizar la página
+        cargarTotalSocios();
     }
 
     const sesionGuardada = localStorage.getItem('fitgym_session');
@@ -51,5 +54,29 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.clear();
             window.location.reload(); 
         });
+    }
+
+    // --- CONTADOR DINÁMICO DE SOCIOS ---
+    const contadorSocios = document.getElementById('contador-socios');
+    
+    async function cargarTotalSocios() {
+        if (!contadorSocios) return; 
+
+        try {
+            const respuesta = await fetch('http://127.0.0.1:8000/api/socios/count/');
+            if (!respuesta.ok) throw new Error('Error al obtener el contador');
+            
+            const datos = await respuesta.json();
+            
+            contadorSocios.innerText = datos.total_socios;
+            
+        } catch (error) {
+            console.error("No se pudo cargar el contador:", error);
+            contadorSocios.innerText = "-"; 
+        }
+    }
+
+    if (sesionGuardada) {
+        cargarTotalSocios();
     }
 });
