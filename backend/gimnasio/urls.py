@@ -9,4 +9,5 @@ urlpatterns = [
     path('monitores/<int:id>', views.detalle_monitor),
     path('clases', views.gestion_clases),
     path('clases/<int:id>', views.detalle_clase),
+    path('api/socios/count/', views.contador_socios_publico, name='contador_socios_publico'),
 ]

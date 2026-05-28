@@ -38,6 +38,10 @@ def tarifa_to_dict(t):
         'descripcion': t.descripcion
     }
 
+def contador_socios_publico(request):
+    total = Socio.objects.count
+    return JsonResponse({'total_socios':total})
+
 @csrf_exempt
 def gestion_tarifas(request):
 
