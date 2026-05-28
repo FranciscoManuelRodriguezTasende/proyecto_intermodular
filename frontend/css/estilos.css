@@ -111,14 +111,13 @@ body {
 
 .menu-nav { 
     list-style: none; 
-    height: 100%; /* Que ocupe todo el nav */
-    display: flex;
+    height: 100%; 
     flex-direction: column;
 }
 
 .menu-nav li:last-child {
     margin-top: auto;
-    margin-bottom: 20px; /* Le damos un poco de aire para que no pegue justo en el borde de la pantalla */
+    margin-bottom: 20px; 
 }
 
 .nav-link { 

@@ -170,7 +170,7 @@ body, html {
 .socios-list {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Aquí está el espacio entre tarjetas */
+    gap: 20px; 
     width: 100%; 
     max-width: 1400px; 
 }

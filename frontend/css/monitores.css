@@ -135,8 +135,8 @@ body, html {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 100%; /* Ahora ocupa todo el ancho disponible */
-    max-width: 1400px; /* Límite amplio para que llegue casi hasta el final */
+    width: 100%; 
+    max-width: 1400px; 
 }
 
 .mensaje-carga {
@@ -216,7 +216,7 @@ body, html {
 .monitor-actions {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Aumentada la separación entre botones de 10px a 15px */
+    gap: 15px; 
     width: 220px;
 }
 
