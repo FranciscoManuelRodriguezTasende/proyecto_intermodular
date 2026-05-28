@@ -39,7 +39,7 @@ def tarifa_to_dict(t):
     }
 
 def contador_socios_publico(request):
-    total = Socio.objects.count
+    total = Socio.objects.count()
     return JsonResponse({'total_socios':total})
 
 @csrf_exempt
