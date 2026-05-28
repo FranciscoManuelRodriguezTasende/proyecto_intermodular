@@ -251,6 +251,16 @@ document.addEventListener('DOMContentLoaded', () => {
         } catch (error) { console.error("Error:", error); }
     }
 
+    // FUNCIONALIDAD DEL MENÚ HAMBURGUESA
+    const btnMenu = document.getElementById('btn-menu-movil');
+    const menuNav = document.querySelector('.menu-nav');
+
+    if (btnMenu && menuNav) {
+        btnMenu.addEventListener('click', () => {
+            menuNav.classList.toggle('mostrar-menu');
+        });
+    }
+    
     // --- 8. INICIAR ---
     cargarMonitores();
 });
