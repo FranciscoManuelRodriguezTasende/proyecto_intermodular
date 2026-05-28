@@ -112,6 +112,7 @@ body {
 .menu-nav { 
     list-style: none; 
     height: 100%; 
+    display: flex;
     flex-direction: column;
 }
 
