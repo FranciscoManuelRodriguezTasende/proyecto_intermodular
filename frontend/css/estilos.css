@@ -35,7 +35,8 @@ body {
     background: #ffffff; 
     padding: 40px; 
     border-radius: 12px; 
-    width: 350px; 
+    width: 90%;
+    max-width: 350px; 
     text-align: center; 
     box-shadow: 0 10px 25px rgba(0,0,0,0.2); 
 }
@@ -257,4 +258,101 @@ hr {
 
 .badge.secondary { 
     background: #64748b; 
+}
+
+/* MENU HAMBURGUESA */
+.menu-toggle {
+    display: none; 
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #4f46e5;
+    cursor: pointer;
+}
+
+/* DISEÑO RESPONSIVE */
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .sidebar { 
+        width: 200px; 
+    }
+    .logo { 
+        padding: 25px 15px; 
+        font-size: 1.3rem; 
+    }
+    .nav-link { 
+        padding: 12px 15px; 
+    }
+    .top-header { 
+        padding: 15px 25px; 
+    }
+    .content-area, .card { 
+        padding: 20px; 
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-container { 
+        flex-direction: column; 
+    }
+    
+    .sidebar {
+        width: 100%;
+        height: auto;
+        min-height: auto;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        border-right: none;
+        border-bottom: 1px solid #e2e8f0;
+        position: relative;
+        z-index: 999; 
+    }
+
+    .logo {
+        padding: 0;
+        width: 100%; 
+    }
+
+    .menu-toggle { 
+        display: block; 
+    }
+
+    .menu-nav {
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 100%; 
+        left: 0;
+        width: 100%;
+        height: auto;
+        background: #ffffff;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        padding-bottom: 20px;
+    }
+
+    .menu-nav.mostrar-menu { 
+        display: flex; 
+    }
+    .nav-link.logout { 
+        margin-top: 10px; 
+    }
+    .main-content, .content-area, .top-header { 
+        padding: 15px; 
+    }
+    .top-header h1 { 
+        font-size: 1.5rem; 
+    }
+    
+    .grid-stats {
+        grid-template-columns: 1fr; 
+        gap: 15px;
+    }
+    
+    .stat-card i {
+        padding: 10px;
+        font-size: 1.2rem;
+    }
 }

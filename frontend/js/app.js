@@ -76,7 +76,18 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Llamada a la función para que cuando se cambie de página dentro del menú se mantenga el conteo
     if (sesionGuardada) {
         cargarTotalSocios();
+    }
+
+    // FUNCIONALIDAD DEL MENÚ HAMBURGUESA
+    const btnMenu = document.getElementById('btn-menu-movil');
+    const menuNav = document.querySelector('.menu-nav');
+
+    if (btnMenu && menuNav) {
+        btnMenu.addEventListener('click', () => {
+            menuNav.classList.toggle('mostrar-menu');
+        });
     }
 });

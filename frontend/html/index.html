@@ -25,15 +25,18 @@
     <div id="app-container" class="dashboard-container">
         
         <aside class="sidebar">
-            <div class="logo"><a href="index.html"><i class="fas fa-dumbbell"></i> <span>FitGym</span></a></div>
+            <div class="logo">
+                <a href="index.html"><i class="fas fa-dumbbell"></i> <span>FitGym</span></a>
+                <button id="btn-menu-movil" class="menu-toggle"><i class="fas fa-bars"></i></button>
+            </div>
             <nav>
                 <ul class="menu-nav">
-                    <li><a href="#" class="nav-link active"><i class="fas fa-bullhorn"></i> Inicio / Tablón</a></li>
+                    <li><a href="index.html" class="nav-link active"><i class="fas fa-bullhorn"></i> Inicio / Tablón</a></li>
                     
                     <li class="solo-admin"><a href="monitores.html" class="nav-link menu-inactivo"><i class="fas fa-user-tie"></i> Monitores</a></li>
                     <li class="solo-admin"><a href="socios.html" class="nav-link menu-inactivo"><i class="fas fa-users"></i> Socios</a></li>
                     
-                    <li><a href="clases.html" class="nav-link menu-inactivo"><i class="fas fa-calendar-alt"></i> Clases</a></li>
+                    <li><a class="nav-link menu-inactivo" href="clases.html"><i class="fas fa-calendar-alt"></i> Clases</a></li>
                     <li><a href="tarifas.html" class="nav-link menu-inactivo"><i class="fas fa-tags"></i> Tarifas</a></li>
                     
                     <li><a href="#" id="btn-logout" class="nav-link logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
