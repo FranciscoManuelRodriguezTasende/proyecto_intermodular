@@ -143,7 +143,7 @@ body {
 }
 
 /* --- TARJETAS RECICLADAS --- */
-.monitor-card { 
+.clases-card { 
     background-color: #ffffff; 
     border: 1px solid #e2e8f0; 
     border-radius: 12px; 
@@ -170,11 +170,11 @@ body {
     font-size: 1.5rem; 
 }
 
-.monitor-info { 
+.clases-info { 
     flex: 1; 
 }
 
-.monitor-info h3 { 
+.clases-info h3 { 
     font-size: 1.3rem; 
     color: #1e293b; 
     margin-bottom: 8px; 
@@ -182,7 +182,7 @@ body {
 }
 
 /* Usado para la descripción manteniendo los estilos de texto base */
-.email { 
+.horario { 
     color: #64748b; 
     font-size: 0.95rem; 
     margin-bottom: 15px; 
@@ -213,7 +213,7 @@ body {
 }
 
 /* --- TAMAÑO FIJO PARA LAS TARJETAS EN CUADRÍCULA --- */
-.lista-clases .monitor-card {
+.lista-clases .clases-card {
     width: 400px; 
     flex-grow: 0;
     align-items: flex-start;
@@ -222,4 +222,156 @@ body {
 .lista-clases .clases-tags {
     flex-wrap: wrap;
     margin-top: 10px;
+}
+
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #4f46e5;
+    cursor: pointer;
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .sidebar { 
+        width: 200px; 
+    }
+    
+    .logo { 
+        padding: 25px 15px; 
+        font-size: 1.3rem; 
+    }
+    
+    .nav-link { 
+        padding: 12px 15px; 
+    }
+    
+    .main-content { 
+        padding: 20px; 
+    }
+
+    .lista-clases {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 16px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column; 
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        min-height: auto;
+        position: relative; 
+        z-index: 1000;
+    }
+
+    .logo {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+        padding: 15px 25px;
+        background: #ffffff; 
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .sidebar nav {
+        display: none; 
+        position: absolute; 
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #ffffff;
+        box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+        padding-bottom: 15px;
+    }
+
+    .sidebar nav.activo {
+        display: block; 
+    }
+
+    .main-content { 
+        padding: 20px; 
+        max-width: 100%;
+    }
+
+    .lista-clases {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .clases-card {
+        width: 300px;
+        max-width: 100%;
+        height: 280px;
+        padding: 30px 20px;
+        display: flex;
+        flex-direction: column; 
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .avatar-container { 
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    .avatar { 
+        width: 60px; 
+        height: 60px; 
+        font-size: 1.5rem; 
+    }
+
+    .clases-tags {
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    .clases-info {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        flex: 1;
+    }
+
+    .clases-info h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0;
+    }
+
+    .email {
+        text-align: center;
+        margin-bottom: 0;
+        width: 100%;
+    }
+
+    .clases-tags {
+        justify-content: center;
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .avatar-container { 
+        margin-right: 0; 
+        margin-bottom: 15px;
+        display: flex;          
+        justify-content: center;
+        width: 100%;
+    }
 }

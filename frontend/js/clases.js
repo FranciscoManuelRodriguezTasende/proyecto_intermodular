@@ -74,14 +74,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const numAsistentes = clase.asistentes_count || 0;
 
             const tarjetaHTML = `
-                <div class="monitor-card">
+                <div class="clases-card">
                     <div class="avatar-container">
                         <div class="avatar"><i class="fas fa-running"></i></div>
                     </div>
-                    <div class="monitor-info">
+                    <div class="clases-info">
                         <h3>${nombre}</h3>
                         
-                        <p class="email"><i class="far fa-clock"></i> ${horario}</p>
+                        <p class="horario"><i class="far fa-clock"></i> ${horario}</p>
                         
                         <div class="clases-tags">
                             <span class="tag-label">Personal:</span>
@@ -93,6 +93,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
             contenedorClases.innerHTML += tarjetaHTML;
+        });
+    }
+
+    // --- FUNCIONALIDAD DEL MENÚ HAMBURGUESA ---
+    const btnMenu = document.getElementById('btn-menu-movil');
+    const navMenu = document.querySelector('.sidebar nav'); // Seleccionamos el nav
+
+    if (btnMenu && navMenu) {
+        btnMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('activo');
         });
     }
 
