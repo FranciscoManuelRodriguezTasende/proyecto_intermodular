@@ -93,7 +93,7 @@ body {
     background: #fef2f2;
 }
 
-#btn-logout{
+#btn-logout {
     margin-bottom: 0;
 }
 
@@ -125,20 +125,22 @@ body {
     font-size: 1rem; 
 }
 
-/* Contenedor flex para centrar las 3 tarjetas */
+/* =========================================
+   GRID DE TARJETAS (VISTA PC - 3 COLUMNAS)
+   ========================================= */
 .lista-tarifas {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas perfectas en PC */
     gap: 40px;
-    flex-wrap: wrap;
     margin-top: 30px;
+    width: 100%;
 }
 
 /* 1. EL CONTENEDOR DE LA TARJETA (Aporta la perspectiva 3D) */
 .flip-card {
     background-color: transparent;
-    width: 450px;
-    height: 550px;
+    width: 100%; /* Adaptable a la columna */
+    height: 500px;
     perspective: 1000px; 
 }
 
@@ -196,7 +198,6 @@ body {
     font-size: 1.1rem;
 }
 
-/* Diseño de la cara Trasera (La que está dada la vuelta inicialmente) */
 .flip-card-back {
     background-color: #4f46e5; 
     color: white;
@@ -213,4 +214,116 @@ body {
 .flip-card-back p {
     font-size: 1.1rem;
     line-height: 1.6;
+}
+
+.menu-toggle {
+    display: none; 
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: #4f46e5;
+    cursor: pointer;
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+    .sidebar { 
+        width: 200px;
+    }
+    .logo { 
+        padding: 25px 15px; 
+        font-size: 1.3rem; 
+    }
+    .nav-link { 
+        padding: 12px 15px; 
+    }
+    .main-content { 
+        padding: 30px; 
+    }
+
+    
+    .lista-tarifas {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 20px;
+        width: 100%;
+    }
+
+    .flip-card { 
+        width: 100%; 
+        height: 420px; 
+    } 
+}
+
+@media (max-width: 768px) {
+    .dashboard-container { 
+        flex-direction: column; 
+        height: auto;
+        overflow-y: auto;
+    }
+    .sidebar {
+        width: 100%;
+        height: auto;
+        min-height: auto;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        border-right: none;
+        border-bottom: 1px solid #e2e8f0;
+        position: relative;
+        z-index: 999; 
+    }
+
+    .logo {
+        padding: 0;
+        width: 100%; 
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 20px; 
+    }
+
+    .menu-toggle { 
+        display: block; 
+    }
+
+    .sidebar nav {
+        display: none; 
+        position: absolute;
+        top: 100%; 
+        left: 0;
+        width: 100%;
+        background: #ffffff;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        padding-bottom: 20px;
+    }
+
+    .sidebar nav.activo { 
+        display: block; 
+    }
+
+    .main-content { 
+        padding: 20px; 
+        overflow-y: visible;
+    }
+
+    .lista-tarifas {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .flip-card {
+        width: 100%; 
+        height: 400px; 
+    }
+
+    .flip-card-front h2 { 
+        font-size: 1.8rem; 
+    }
+    .flip-card-front .precio { 
+        font-size: 2.5rem; 
+    }
 }

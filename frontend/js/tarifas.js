@@ -91,6 +91,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- 10. FUNCIONALIDAD DEL MENÚ HAMBURGUESA ---
+    const btnMenu = document.getElementById('btn-menu-movil');
+    const navMenu = document.querySelector('.sidebar nav');
+
+    if (btnMenu && navMenu) {
+        btnMenu.addEventListener('click', () => {
+            navMenu.classList.toggle('activo');
+        });
+    }
+    
     // --- 9. INICIAR PETICIÓN ---
     cargarTarifas();
 });
