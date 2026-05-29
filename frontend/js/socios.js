@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- 1. SEGURIDAD ---
     const usuario = localStorage.getItem('fitgym_session');
     const esAdmin = localStorage.getItem('fitgym_is_admin') === 'true';
 
@@ -9,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    // --- 2. CONFIGURACIÓN DEL BACKEND ---
     const API_URL = 'http://localhost:8000/api/socios';
     const contenedorSocios = document.getElementById('contenedor-socios');
     let listaSociosGlobal = [];
@@ -19,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalEditar = document.getElementById('modal-editar');
     const modalPatch = document.getElementById('modal-patch');
 
-    // --- 3. LÓGICA DE MENÚ Y LOGOUT ---
     const btnLogout = document.getElementById('btn-logout');
     if (btnLogout) {
         btnLogout.onclick = (e) => {
@@ -29,25 +25,20 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    // --- 4. BUSCADOR EN TIEMPO REAL ---
     const buscador = document.getElementById('buscador-socios');
     if (buscador) {
         buscador.addEventListener('input', (evento) => {
             const textoBusqueda = evento.target.value.toLowerCase();
             
-            // Filtramos la lista global buscando coincidencias en el nombre
             const sociosFiltrados = listaSociosGlobal.filter(socio => {
-                // Usamos un string vacío por si el nombre viene nulo desde la base de datos
                 const nombreSocio = (socio.nombre || '').toLowerCase();
                 return nombreSocio.includes(textoBusqueda);
             });
             
-            // Volvemos a pintar solo los que coinciden
             renderizarSocios(sociosFiltrados);
         });
     }
 
-    // --- 5. LEER DATOS REALES (GET) ---
     async function cargarSocios() {
         if (!contenedorSocios) return;
         
@@ -56,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!respuesta.ok) throw new Error('Error al conectar con el servidor');
             
             const socios = await respuesta.json();
-            listaSociosGlobal = socios; // Guardamos la lista completa para el buscador
+            listaSociosGlobal = socios;
             renderizarSocios(listaSociosGlobal);
         } catch (error) {
             console.error("Error de conexión:", error);
@@ -66,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- 6. DIBUJAR LAS TARJETAS DINÁMICAMENTE ---
     function renderizarSocios(listaSocios) {
         contenedorSocios.innerHTML = ''; 
 
@@ -104,7 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
         asignarEventosBotones();
     }
 
-    // --- 7. EVENTOS DE LOS BOTONES DE TARJETA ---
     function asignarEventosBotones() {
         // BORRAR (DELETE)
         document.querySelectorAll('.btn-eliminar').forEach(boton => {
@@ -159,7 +148,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 8. APERTURA Y CIERRE DE MODALES ---
     const btnNuevoSocio = document.getElementById('btn-nuevo-socio');
     if (btnNuevoSocio) {
         btnNuevoSocio.onclick = () => {
@@ -179,9 +167,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (document.getElementById('btn-cerrar-patch')) document.getElementById('btn-cerrar-patch').onclick = () => cerrarModal(modalPatch);
     if (document.getElementById('btn-cancelar-patch')) document.getElementById('btn-cancelar-patch').onclick = () => cerrarModal(modalPatch);
-
-
-    // --- 9. FUNCIONES DE ENVÍO DE FORMULARIOS (POST, PUT, PATCH) ---
 
     // CREAR (POST)
     window.crearSocio = async function() {
@@ -265,6 +250,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // --- 10. INICIAR ---
     cargarSocios();
 });

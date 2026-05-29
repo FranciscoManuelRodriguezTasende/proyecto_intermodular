@@ -1,16 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     
-    // 1. OBTENER DATOS
     const usuario = localStorage.getItem('fitgym_session');
     const esAdmin = localStorage.getItem('fitgym_is_admin') === 'true';
 
-    // 2. SEGURIDAD (Pepe puede entrar, pero solo si hay sesión)
     if (!usuario) {
         window.location.href = 'index.html';
         return;
     }
 
-    // 3. LOGOUT (Asegúrate de que el ID en el HTML sea 'btn-logout')
     const btnLogout = document.getElementById('btn-logout');
     if (btnLogout) {
         btnLogout.onclick = (e) => {
@@ -20,23 +17,18 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    // 4. CONTROL DE VISIBILIDAD PARA PEPE
-    // Si el usuario es Pepe, ocultamos las opciones de Monitores y Socios
     if (!esAdmin) {
         document.querySelectorAll('.solo-admin').forEach(el => {
             el.style.setProperty('display', 'none', 'important');
         });
     }
 
-    // 5. PONER NOMBRE EN CABECERA
     const nombreHeader = document.getElementById('nombre-usuario-display');
     if (nombreHeader) nombreHeader.innerText = usuario;
 
-    // --- 6. CONFIGURACIÓN DEL BACKEND ---
     const API_URL = 'http://127.0.0.1:8000/api/tarifas'; 
     const contenedorTarifas = document.getElementById('contenedor-tarifas');
 
-    // --- 7. LEER DATOS REALES (GET) ---
     async function cargarTarifas() {
         if (!contenedorTarifas) return;
 
@@ -54,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- 8. DIBUJAR LAS TARJETAS DINÁMICAMENTE ---
     function renderizarTarifas(listaTarifas) {
         contenedorTarifas.innerHTML = ''; 
 
@@ -91,7 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 10. FUNCIONALIDAD DEL MENÚ HAMBURGUESA ---
     const btnMenu = document.getElementById('btn-menu-movil');
     const navMenu = document.querySelector('.sidebar nav');
 
@@ -101,6 +91,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // --- 9. INICIAR PETICIÓN ---
     cargarTarifas();
 });

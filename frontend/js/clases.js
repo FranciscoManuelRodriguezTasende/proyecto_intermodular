@@ -1,16 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // 1. OBTENER DATOS
     const usuario = localStorage.getItem('fitgym_session');
     const esAdmin = localStorage.getItem('fitgym_is_admin') === 'true';
 
-    // 2. SEGURIDAD (Pepe puede entrar, pero solo si hay sesión)
     if (!usuario) {
         window.location.href = 'index.html';
         return;
     }
 
-    // 3. LOGOUT (Asegúrate de que el ID en el HTML sea 'btn-logout')
     const btnLogout = document.getElementById('btn-logout');
     if (btnLogout) {
         btnLogout.onclick = (e) => {
@@ -20,23 +16,18 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    // 4. CONTROL DE VISIBILIDAD PARA PEPE
-    // Si el usuario es Pepe, ocultamos las opciones de Monitores y Socios
     if (!esAdmin) {
         document.querySelectorAll('.solo-admin').forEach(el => {
             el.style.setProperty('display', 'none', 'important');
         });
     }
 
-    // 5. PONER NOMBRE EN CABECERA
     const nombreHeader = document.getElementById('nombre-usuario-display');
     if (nombreHeader) nombreHeader.innerText = usuario;
 
-    // --- 6. CONFIGURACIÓN DEL BACKEND ---
     const API_URL = 'http://localhost:8000/api/clases'; 
     const contenedorClases = document.getElementById('contenedor-clases');
 
-    // --- 7. LEER DATOS REALES (GET) ---
     async function cargarClases() {
         if (!contenedorClases) return;
         
@@ -54,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- 8. DIBUJAR LAS TARJETAS DINÁMICAMENTE ---
     function renderizarClases(listaClases) {
         contenedorClases.innerHTML = ''; 
 
@@ -67,10 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const nombre = clase.nombre || 'Clase sin nombre';
             const horario = clase.horario || 'Horario no especificado';
             
-            // Tu backend ya hace el trabajo duro, así que simplemente cogemos la variable:
             const monitorInfo = clase.monitor_nombre;
 
-            // (Opcional) Si quieres mostrar también los asistentes que calculaste:
             const numAsistentes = clase.asistentes_count || 0;
 
             const tarjetaHTML = `
@@ -106,6 +94,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 9. INICIAR PETICIÓN ---
     cargarClases();
 });

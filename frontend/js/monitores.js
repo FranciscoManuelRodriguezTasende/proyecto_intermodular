@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- 1. SEGURIDAD ---
     const usuario = localStorage.getItem('fitgym_session');
     const esAdmin = localStorage.getItem('fitgym_is_admin') === 'true';
 
@@ -9,15 +7,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    // --- 2. CONFIGURACIÓN DEL BACKEND ---
     const API_URL = 'http://localhost:8000/api/monitores'; 
     const contenedorMonitores = document.getElementById('contenedor-monitores');
 
-    // --- NUEVO: CONSTANTES PARA CREAR ---
     const modalCrear = document.getElementById('modal-crear');
     const btnNuevoMonitor = document.getElementById('btn-nuevo-monitor');
 
-    // --- 3. LÓGICA DE MENÚ Y LOGOUT ---
     const btnLogout = document.getElementById('btn-logout');
     if (btnLogout) {
         btnLogout.onclick = (e) => {
@@ -27,7 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
 
-    // --- NUEVO: LÓGICA APERTURA/CIERRE MODAL CREAR ---
     if (btnNuevoMonitor) {
         btnNuevoMonitor.onclick = () => {
             document.getElementById('form-crear').reset();
@@ -42,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('btn-cancelar-crear').onclick = () => modalCrear.style.display = 'none';
     }
 
-    // --- 4. LEER DATOS REALES (GET) ---
     async function cargarMonitores() {
         if (!contenedorMonitores) return;
         
@@ -60,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- 5. DIBUJAR LAS TARJETAS DINÁMICAMENTE ---
     function renderizarMonitores(listaMonitores) {
         contenedorMonitores.innerHTML = ''; 
 
@@ -108,7 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
         asignarEventosBotones();
     }
 
-    // --- 6. EVENTOS DE LOS BOTONES ---
     function asignarEventosBotones() {
         // BORRAR (DELETE)
         document.querySelectorAll('.btn-eliminar').forEach(boton => {
@@ -164,7 +155,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- 7. LÓGICA DE LOS MODALES ---
     const modalEditar = document.getElementById('modal-editar');
     const formEditar = document.getElementById('form-editar');
     if (document.getElementById('btn-cerrar-modal')) document.getElementById('btn-cerrar-modal').onclick = () => modalEditar.style.display = 'none';
@@ -203,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
         btnEnviarPatch.addEventListener('click', enviarPatch);
     }
 
-    // --- NUEVO: FUNCIÓN CREAR MONITOR (POST) ---
+    // --- FUNCIÓN CREAR MONITOR (POST) ---
     window.crearMonitor = async function() {
         const datos = {
             nombre: document.getElementById('crear-nombre').value,
@@ -261,6 +251,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
     
-    // --- 8. INICIAR ---
     cargarMonitores();
 });
