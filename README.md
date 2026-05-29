@@ -1,63 +1,111 @@
-# FitGym - Sistema de Gestión de Gimnasio
+# 🏋️‍♂️ FitGym - Sistema de Gestión de Gimnasio
 
-## 1. Descripción del Proyecto y Ámbito de Implantación
+![Estado: Finalizado](https://img.shields.io/badge/Estado-Finalizado-success)
+![Python](https://img.shields.io/badge/Python-3.10+-blue?logo=python)
+![Django](https://img.shields.io/badge/Django-4.x-092E20?logo=django)
+![JavaScript](https://img.shields.io/badge/JavaScript-Vanilla-F7DF1E?logo=javascript)
 
-FitGym es una aplicación web integral diseñada para la administración y el control centralizado de los recursos de un centro deportivo. Esta herramienta está dirigida al personal de administración y gerencia del gimnasio, permitiendo digitalizar procesos como la gestión de miembros, tarifas y clases.
+## 📝 Descripción del Proyecto
 
-Este proyecto ha sido estructurado siguiendo el modelo de **Proyecto Intermodular del Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Web (DAW)** para el Centro de Formación Profesional Afundación - ABANCA, cumpliendo estrictamente con las especificaciones de la **Modalidad Tipo 2**: una interfaz de usuario cliente enriquecida y desacoplada que consume de forma asíncrona una **API REST** de arquitectura propia.
+FitGym es una aplicación web integral diseñada para la administración y el control centralizado de los recursos de un centro deportivo. Esta herramienta está dirigida al personal de administración y gerencia del gimnasio, permitiendo digitalizar procesos manuales y tener un control total sobre los miembros, las tarifas y el equipo de monitores.
 
-## 2. Objetivos del Proyecto
+Este proyecto ha sido estructurado como el **Proyecto Intermodular del Ciclo Formativo de Grado Superior en Desarrollo de Aplicaciones Web (DAW)**, cumpliendo con la modalidad de interfaz de usuario cliente enriquecida y desacoplada que consume de forma asíncrona una API REST.
 
-* **Objetivo General:** Desarrollar una aplicación web funcional tipo panel de administración (Dashboard) para gestionar de forma integral los recursos del gimnasio.
-* **Objetivos Específicos:**
-  * Crear un sistema de gestión (CRUD) automatizado para socios y monitores.
-  * Implementar una gestión de socios vinculados a distintas tarifas modulares.
-  * Diseñar una interfaz intuitiva, accesible y adaptable utilizando HTML semántico, CSS y JavaScript Vanilla.
-  * Desarrollar y exponer una API REST segura con el framework Django (Python) para el backend.
+## 🚀 Estado del Proyecto
 
----
+✔️ **MVP (Producto Mínimo Viable) Completado.** El proyecto cumple con todos los requisitos básicos de gestión y conexión asíncrona entre cliente y servidor.
 
-## 3. Arquitectura de la Aplicación
+## ✨ Características de la Aplicación
 
-El diseño de FitGym se basa en una arquitectura cliente-servidor, separando claramente la capa de presentación (Frontend) de la lógica de negocio y persistencia de datos (Backend).
+- **Control de Acceso (Roles):** Sistema de visualización dinámico dependiendo de si el usuario es un socio estándar o un administrador.
+- **Gestión de Socios (CRUD):** Creación, lectura, actualización y eliminación de miembros, con asignación de tarifas personalizadas.
+- **Gestión de Monitores (CRUD):** Panel de control para administrar la plantilla de trabajadores y las clases que imparten.
+- **Búsqueda en tiempo real:** Filtrado dinámico de usuarios desde el cliente sin necesidad de recargar la página.
+- **Interfaz SPA (Single Page Application):** Navegación fluida y ventanas modales generadas dinámicamente con JavaScript.
 
-### 3.1. Arquitectura Frontend (HTML, CSS y JS)
-* **Estructura HTML Semántica:** Se han empleado etiquetas semánticas de HTML5 en todas las vistas (`<aside>`, `<nav>`, `<main>`, `<header>`) para garantizar una correcta accesibilidad y estructuración del contenido.
-* **CSS Modular y Diseño Adaptativo:** El diseño visual se ha construido utilizando Flexbox, organizando el CSS de forma modular por funcionalidades (ej. `socios.css`). Se emplean clases reutilizables y el sistema está preparado para implementar *media queries* que garanticen un diseño responsivo.
-* **JavaScript Asíncrono:** La lógica del lado del cliente implementa un buscador en tiempo real para optimizar el filtrado y utiliza peticiones asíncronas (`fetch`) para consumir la API e intercambiar datos en formato JSON.
+## 💻 Tecnologías Utilizadas
 
-### 3.2. Arquitectura Backend (Django)
-* **Diseño de Base de Datos:** El sistema se apoya en una base de datos relacional (SQLite) con modelos para `Socio`, `Monitor`, `Tarifa` y `Clase`. El esquema incluye relaciones 1:N (un Socio pertenece a una Tarifa) y relaciones N:M (Clases y Socios asistentes).
-* **Fachada REST (Endpoints):** La API de FitGym se comunica exclusivamente mediante JSON e implementa métodos HTTP estándar (GET, POST, PUT, PATCH, DELETE), cubriendo las necesidades completas del CRUD y gestionando de forma segura las políticas CORS.
+El diseño de FitGym se basa en una arquitectura cliente-servidor estricta:
 
----
+**Frontend (Capa de Presentación)**
+- HTML5 (Estructura semántica)
+- CSS3 (Diseño modular, Flexbox y Grid, Responsive Design)
+- JavaScript Vanilla (Peticiones asíncronas `fetch`, manipulación del DOM)
 
-## 4. Requisitos del Sistema (Hardware y Software)
-
-### Requisitos del Servidor (Backend y BBDD)
-* **Hardware:** Procesador de doble núcleo (1.5 GHz o superior), mínimo 2 GB de RAM (recomendado 4 GB) y 5 GB de espacio libre en disco.
-* **Software:** SO Windows 10/11, macOS o Linux. Python 3.10 o superior instalado globalmente. Framework Django y motor SQLite integrado.
-
-### Requisitos del Cliente (Frontend)
-* **Hardware:** Dispositivo estándar (escritorio, tablet o móvil) con mínimo 2 GB de RAM y pantalla con resolución mínima de 360px de ancho.
-* **Software:** Navegador web moderno (Chrome, Firefox, Edge, Safari) con **la ejecución de JavaScript habilitada** obligatoriamente.
+**Backend (Capa de Negocio y Datos)**
+- Python 3.10+
+- Django (Framework backend para la creación de la API REST)
+- SQLite (Base de datos relacional integrada)
+- Librerías adicionales: `django-cors-headers` (Para permitir la comunicación cruzada entre el puerto del frontend y el del backend).
 
 ---
 
-## 5. Estructura del Repositorio
+## 🛠️ Acceso y Configuración del Proyecto (Guía paso a paso)
+
+Sigue estos pasos para arrancar el proyecto en tu máquina local desde cero. No necesitas conocimientos previos avanzados.
+
+### Requisitos previos
+Debes tener instalado en tu ordenador:
+1. **Python** (versión 3.10 o superior). [Descargar aquí](https://www.python.org/downloads/).
+2. **Visual Studio Code** (o tu editor de código favorito).
+
+### Paso 1: Descargar el proyecto
+Clona este repositorio en tu ordenador o descarga el archivo `.zip` y descomprímelo.
+```bash
+git clone <url-de-tu-repositorio>
+```
+
+### Paso 2: Arrancar el Servidor (Backend)
+Abre una terminal en Visual Studio Code, navega hasta la carpeta `backend` y ejecuta los siguientes comandos:
+
+1. **Crear un entorno virtual** (para aislar las dependencias):
+   ```bash
+   python -m venv venv
+   ```
+2. **Activar el entorno virtual**:
+   - En Windows: `.\venv\Scripts\activate`
+   - En Mac/Linux: `source venv/bin/activate`
+3. **Instalar las librerías necesarias**:
+   ```bash
+   pip install django django-cors-headers
+   ```
+   *(Nota: Si existe un archivo `requirements.txt`, ejecuta directamente `pip install -r requirements.txt`)*
+4. **Preparar la base de datos SQLite**:
+   ```bash
+   python manage.py migrate
+   ```
+5. **Encender el servidor**:
+   ```bash
+   python manage.py runserver
+   ```
+   *⚠️ Importante: Deja esta terminal abierta y corriendo en segundo plano. El servidor local estará funcionando en `http://127.0.0.1:8000/`.*
+
+### Paso 3: Arrancar la Interfaz Web (Frontend)
+1. Abre una nueva terminal o utiliza el explorador de archivos para ir a la carpeta `frontend/html/`.
+2. Busca el archivo `login.html` (o `index.html`).
+3. Para una mejor experiencia, ábrelo utilizando la extensión **Live Server** de Visual Studio Code (Click derecho sobre el archivo -> *Open with Live Server*). 
+4. Utiliza las siguientes credenciales de prueba para acceder:
+   - **Administrador:** Usuario: `admin` / Contraseña: `1234`
+   - **Socio:** Usuario: `pepe` / Contraseña: `1234`
+
+---
+
+## 📁 Estructura del Repositorio
 
 ```text
 proyecto_intermodular/
 ├── backend/                 # Arquitectura de la API REST (Python/Django)
 │   ├── core/                # Configuración global del proyecto de Django
 │   ├── gimnasio/            # Aplicación encargada del negocio del gimnasio
-│   │   ├── models.py        # Modelos relacionales de datos
-│   │   ├── views.py         # Controladores de la API y endpoints expuestos
-│   │   └── urls.py          # Enrutamiento de la fachada REST
 │   ├── db.sqlite3           # Archivo de base de datos relacional SQLite
 │   └── manage.py            # Utilidad de comandos de gestión de Django
 ├── frontend/                # Capa de Interfaz de Usuario (UI)
-│   ├── html/                # Vistas y modales (index.html, socios.html, etc.)
-│   ├── css/                 # Estilos en cascada modulares y reutilizables
+│   ├── html/                # Vistas y modales
+│   ├── css/                 # Estilos en cascada modulares
 │   └── js/                  # Controladores de eventos e integración con API REST
-└── venv/                    # Entorno virtual de dependencias (excluido en Git)
+└── README.md                # Documentación del proyecto
+```
+
+## ✒️ Autor
+
+* **Francisco Manuel Rodríguez Tasende** - *Desarrollo Full Stack (DAW)*
