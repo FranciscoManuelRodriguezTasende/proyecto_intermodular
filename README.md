@@ -82,7 +82,7 @@ Abre una terminal en Visual Studio Code, navega hasta la carpeta `backend` y eje
 
 ### Paso 3: Arrancar la Interfaz Web (Frontend)
 1. Abre una nueva terminal o utiliza el explorador de archivos para ir a la carpeta `frontend/html/`.
-2. Busca el archivo `login.html` (o `index.html`).
+2. Busca el archivo `index.html`.
 3. Para una mejor experiencia, ábrelo utilizando la extensión **Live Server** de Visual Studio Code (Click derecho sobre el archivo -> *Open with Live Server*). 
 4. Utiliza las siguientes credenciales de prueba para acceder:
    - **Administrador:** Usuario: `admin` / Contraseña: `1234`
