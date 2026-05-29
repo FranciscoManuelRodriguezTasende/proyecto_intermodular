@@ -269,7 +269,8 @@ body, html {
     background: #ffffff;
     padding: 30px;
     border-radius: 12px;
-    width: 450px;
+    width: 90%;
+    max-width: 450px;
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
@@ -455,23 +456,26 @@ body, html {
         width: 100%;
     }
 
-    #contenedor-monitores > div{
+    .monitor-card {
         flex-direction: column;
-        align-items: stretch;
+        text-align: center;
+        padding: 20px;
         gap: 15px;
-        text-align: left;
     }
 
-    #contenedor-monitores > div > div:last-child{
-        width: 250px;
-        max-width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
+    .avatar-container {
+        margin-right: 0; 
     }
 
-    #contenedor-monitores > div button{
+    .clases-tags {
+        justify-content: center; 
+    }
+
+    .monitor-actions {
         width: 100%;
-        margin: 0; 
+    }
+
+    .monitor-actions .btn {
+        justify-content: center;
     }
 }

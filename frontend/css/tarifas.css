@@ -125,9 +125,6 @@ body {
     font-size: 1rem; 
 }
 
-/* =========================================
-   GRID DE TARJETAS (VISTA PC - 3 COLUMNAS)
-   ========================================= */
 .lista-tarifas {
     display: grid;
     grid-template-columns: repeat(3, 1fr); /* 3 columnas perfectas en PC */
@@ -157,6 +154,7 @@ body {
 /* 3. EL TRIGGER: Al hacer hover, rotamos el eje 180 grados */
 .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
+    cursor: pointer;
 }
 
 /* 4. LAS CARAS (Frontal y Trasera) */
